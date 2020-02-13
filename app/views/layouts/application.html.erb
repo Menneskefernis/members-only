@@ -16,5 +16,6 @@
       <%= link_to "Log in", login_path %>
     <% end %>
     <%= yield %>
+    <%= @current_user.to_yaml %>
   </body>
 </html>

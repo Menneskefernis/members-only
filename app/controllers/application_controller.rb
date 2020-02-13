@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   def log_in(user)
     digest = user.create_remember_digest
     cookies.permanent[:user_id] = digest
-    current_user = user
+    self.current_user = user
   end
 
   def current_user=(user)
