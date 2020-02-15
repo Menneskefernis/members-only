@@ -1,4 +1,18 @@
-<h1>Write a Post!</h1>
+<% provide(:title, "New Post") %>
+
+<% if @post.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(@post.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for @post, url: post_path do |f| %>
   <%= f.label :title, "Title:" %>
   <%= f.text_field :title %>

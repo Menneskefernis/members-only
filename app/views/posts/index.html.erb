@@ -1,13 +1,4 @@
 <h1>Posts</h1>
 <ul>
-  <% @posts.each do |p| %>
-    <li>
-      <h3><%= p.title %></h3>
-      <p><%= p.body %></p>
-
-      <% if logged_in? %>
-        <i><%= p.user.name %></i>
-      <% end %>
-    </li>
-  <% end %>
+  <%= render @posts %>
 </ul>
