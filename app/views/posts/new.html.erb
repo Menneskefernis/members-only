@@ -1,5 +1,5 @@
 <h1>Write a Post!</h1>
-<%= form_for @post do |f|%>
+<%= form_for @post, url: post_path do |f| %>
   <%= f.label :title, "Title:" %>
   <%= f.text_field :title %>
   

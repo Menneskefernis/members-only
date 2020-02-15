@@ -6,15 +6,18 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       log_in(@user)
-      redirect_to root_path
+      flash[:success] = "Hi member! You successfully logged in!"
+      redirect_to root_url
     else
+      flash.now[:warning] = "An error occurred!"
       render 'new'
     end
   end
 
   def destroy
-    sign_out
-    redirect_to login_path
+    log_out if logged_in?
+    flash[:success] = "You were logged out of the Member's Club!"
+    redirect_to root_url
   end
 
 end

@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     @post = Post.new(user_params)
     @post.user_id = @current_user.id
     if @post.save
-      render 'index'
+      redirect_to root_url
     end
   end
 

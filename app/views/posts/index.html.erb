@@ -6,7 +6,7 @@
       <p><%= p.body %></p>
 
       <% if logged_in? %>
-        <i><%= current_user.name %></i>
+        <i><%= p.user.name %></i>
       <% end %>
     </li>
   <% end %>

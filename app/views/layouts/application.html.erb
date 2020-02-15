@@ -10,12 +10,16 @@
   </head>
 
   <body>
+    <%= link_to "Home", root_path %>
     <% if logged_in? %>  
       <%= link_to "Log out!", logout_path, method: :delete %>
     <% else %>
       <%= link_to "Log in", login_path %>
     <% end %>
+    <%= link_to "Write a post", post_path %>
+    <% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: "flash #{key}" %>
+    <% end %>
     <%= yield %>
-    <%= @current_user.to_yaml %>
   </body>
 </html>

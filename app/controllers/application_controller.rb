@@ -1,25 +1,10 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
 
-  def log_in(user)
-    digest = user.create_remember_digest
-    cookies.permanent[:user_id] = digest
-    self.current_user = user
-  end
-
-  def current_user=(user)
-    @current_user = user
-  end
-
-  def sign_out
-    @current_user = nil
-    cookies.delete(:user_id)
-  end
-
   def logged_in_user
     unless logged_in?
-      flash[:danger] = "Please log in!"
+      flash[:danger] = "Please log in to post!"
+      redirect_to root_url
     end
   end
-
 end
